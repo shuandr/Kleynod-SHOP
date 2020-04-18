@@ -30,7 +30,7 @@
     </div>
 </div>
 <!-- ADDED CART MSG -->
-<div id="addedCartMsg">
+<div id="addedCartMsg" style="display: none;">
     <div class="grid-x align-center-middle">
         <div class="cell large-8">
             <h5 class="uppercase text-center bold">товар додано у кошик</h5>
@@ -164,7 +164,6 @@
             </div>
         </div>        <!-- CONTENT -->
         <div class="off-canvas-content" data-off-canvas-content>
-
             <div class="grid-x ">
                 <div class="cell main-logo text-center">
                     <img src="assets/img/main-logo.svg" alt="">
@@ -182,14 +181,14 @@
                     <div class="cell carton-hole clnd-white-bg ">
                         <div class="grid-x grid-padding-x grid-padding-y align-center ">
                             <div class="cell large-9  brown text-center">
-                                <p><br> В нашій майстерні ми дотримуємось принципу безвідходного виробництва, максимально використовуючи всі матеріали та обрізки.
-                                    <p> В нашій майстерні ми дотримуємось принципу безвідходного виробництва, максимально використовуючи всі матеріали та обрізки.
-                                        <br>Залишки рейок багету трансформуються в рами, які ідеально підійдуть для фотографій, полотен, дзеркал, та іншого домашнього декору.
-                                    </p>
-                                    <p class="dark-gold bold"> Увага! Деякі рами можуть мати незначні дефекти (царапини, тріщинки тощо). <br>Це додає рамам шарму, а вам — супер доступну ціну :)
-                                    </p>
-                                    <p> Доставка в будь-який куточок України.
-                                    </p>
+                                <p><br>
+                                    В нашій майстерні ми дотримуємось принципу безвідходного виробництва, максимально використовуючи всі матеріали та обрізки.
+                                    <br>Залишки рейок багету трансформуються в рами, які ідеально підійдуть для фотографій, полотен, дзеркал, та іншого домашнього декору.
+                                </p>
+                                <p class="dark-gold bold"> Увага! Деякі рами можуть мати незначні дефекти (царапини, тріщинки тощо). <br>Це додає рамам шарму, а вам — супер доступну ціну :)
+                                </p>
+                                <p> Доставка в будь-який куточок України.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -227,64 +226,64 @@
                     <br><br><br>
                 </div>
             </div>
-        </div>
+            <footer class="clnd-footer">
+                <div class=" footer-divider"></div>
+                <div class="grid-x grid-padding-x ">
+                    <div class="cell medium-7 large-9">
+                        <div id="google-map" style="width:100%;height:400px; border:1px solid #a00"></div>
+                    </div>
+                    <div class="cell medium-5 large-3 address">
+                        
+                            <p>рамарня-галерея «Клейнод»<br>
+                                Львів, вул. Коперника, 20
+                                <br><a class="tel" href="tel://+380505329482">050 53-29-482</a>
+                                <br><a class="tel" href="tel://+380322403564">032 240-35-64</a>
+                                <br>kleynod.lviv@gmail.com</p>
+                            <p class="work-hours">ПН—ПТ: 10:00—18:00
+                                <br>СБ: 10:00—15:00 <br>Неділя — вихідний</p> <br>
+                            <a href="https://www.facebook.com/kleynod.lviv/" target="_blank">
+                                <i class="fa fa-facebook-square fa-2x"></i></a>
+                            <a href="https://www.instagram.com/kleynod_framegallery/" target="_blank"> <i class="fa fa-instagram fa-2x"></i></a>
+                    </div>
+                    <!--  -->
+                </div>
+            </footer>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfuN7UgfDB2RfqBeNIZ1S_rpZ6HU-GKYU"></script>
+            <script>
+            var myCenterLviv = new google.maps.LatLng(49.838626, 24.025951);
+            
+            var myPin = 'assets/img/map-pin.png';
+            
+            function initialize() {
+                var mapPropLviv = {
+                    zoomControl: true,
+                    scrollwheel: false,
+                    center: myCenterLviv,
+                    zoom: 17,
+                    disableDefaultUI: true,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+            
+            
+            
+                var mapLviv = new google.maps.Map(document.getElementById("google-map"), mapPropLviv);
+            
+            
+                var myMarker = new google.maps.Marker({
+                    position: myCenterLviv,
+                    icon: myPin,
+                    map: mapLviv,
+                    title: 'вул. Коперника,20'
+                });
+            
+            
+            }
+            
+            google.maps.event.addDomListener(window, 'load', initialize);
+            </script>        </div>
     </div>
 </div>
-<footer class="clnd-footer">
-    <div class=" footer-divider"></div>
-    <div class="grid-x grid-padding-x ">
-        <div class="cell medium-7 large-9">
-            <div id="google-map" style="width:100%;height:400px; border:1px solid #a00"></div>
-        </div>
-        <div class="cell medium-5 large-3 address">
-            
-                <p>рамарня-галерея «Клейнод»<br>
-                    Львів, вул. Коперника, 20
-                    <br><a class="tel" href="tel://+380505329482">050 53-29-482</a>
-                    <br><a class="tel" href="tel://+380322403564">032 240-35-64</a>
-                    <br>kleynod.lviv@gmail.com</p>
-                <p class="work-hours">ПН—ПТ: 10:00—18:00
-                    <br>СБ: 10:00—15:00 <br>Неділя — вихідний</p> <br>
-                <a href="https://www.facebook.com/kleynod.lviv/" target="_blank">
-                    <i class="fa fa-facebook-square fa-2x"></i></a>
-                <a href="https://www.instagram.com/kleynod_framegallery/" target="_blank"> <i class="fa fa-instagram fa-2x"></i></a>
-        </div>
-        <!--  -->
-    </div>
-</footer>
-<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAfuN7UgfDB2RfqBeNIZ1S_rpZ6HU-GKYU"></script>
-<script>
-var myCenterLviv = new google.maps.LatLng(49.838626, 24.025951);
-
-var myPin = 'assets/img/map-pin.png';
-
-function initialize() {
-    var mapPropLviv = {
-        zoomControl: true,
-        scrollwheel: false,
-        center: myCenterLviv,
-        zoom: 17,
-        disableDefaultUI: true,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-
-
-
-    var mapLviv = new google.maps.Map(document.getElementById("google-map"), mapPropLviv);
-
-
-    var myMarker = new google.maps.Marker({
-        position: myCenterLviv,
-        icon: myPin,
-        map: mapLviv,
-        title: 'вул. Коперника,20'
-    });
-
-
-}
-
-google.maps.event.addDomListener(window, 'load', initialize);
-</script><script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-route.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-sanitize.js"></script>
     <script src="assets/js_plugins/myAngular.js"></script>
