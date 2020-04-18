@@ -20,7 +20,15 @@
   </head>
 <body>
 
-<div class="clnd-bg-full"></div>
+<div id="preloader" class="grid-x clnd-bg align-center-middle">
+    <div class="cell" id="pre-logo">
+        <img src="assets/img/main-logo.svg" alt="">
+    </div>
+</div>
+<div style="position: relative;">
+    <div class="clnd-bg-full">
+    </div>
+</div>
 <!-- ADDED CART MSG -->
 <div id="addedCartMsg">
     <div class="grid-x align-center-middle">
@@ -30,20 +38,20 @@
     </div>
 </div>
 <div ng-app="kleynodShop" ng-controller="kleynodShopCtrl">
-<!-- CART VIEW -->
-<div id="cartView" style="display: none;">
-    <div ng-repeat="order in frameCart" class="grid-x grid-padding-x align-bottom cart-order">
-        <div class="cell small-7">
-            <img src="assets/img/ready-frames/{[{data[order].code}]}.jpg" alt="">
-        </div>
-        <div class="cell small-5 frame-descr dark-gold">
-        	<span>{[{data[order].objDims}]}</span>см
-            <div class="price ">
-                <span class="">{[{data[order].price}]}</span>грн
+    <!-- CART VIEW -->
+    <div id="cartView" style="display: none;">
+        <div ng-repeat="order in frameCart" class="grid-x grid-padding-x align-bottom cart-order">
+            <div class="cell small-7">
+                <img src="assets/img/ready-frames/{[{data[order].code}]}.jpg" alt="">
             </div>
-        </div>
-    </div><br>	<br>	
-</div>
+            <div class="cell small-5 frame-descr dark-gold">
+                <span>{[{data[order].objDims}]}</span>см
+                <div class="price ">
+                    <span class="">{[{data[order].price}]}</span>грн
+                </div>
+            </div>
+        </div><br> <br>
+    </div>
     <div class="off-canvas-wrapper">
         <!--     	OFF-CANVAS details -->
         <div class="off-canvas position-top" id="frameDetails" data-off-canvas data-transition="overlap" style="width: 94vw; margin-left: 2vw;">
@@ -178,7 +186,7 @@
                 </div>
             </div><br><br>
             <div class="grid-x grid-padding-x  small-up-1 medium-up-2 large-up-3 xlarge-up-4" data-equalizer data-equalize-by-row="true">
-                <div class="cell" ng-repeat="frame in data">
+                <div class="cell" ng-repeat="frame in data" style="position: relative; z-index: 5">
                     <div class="card  carton-hole" data-equalizer-watch>
                         <div class="clnd-white-bg"></div>
                         <a class="frame-card" ng-click="selectFrame($index)" data-open="frameDetails">
