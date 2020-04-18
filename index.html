@@ -103,23 +103,30 @@
                         </div>
                         <div class="cell auto  ">
                             <div class="frame-descr">
-                                код рами: <span name="код рами">{[{data[order].code}]}</span><br>
+                                <!-- код рами: <span name="код рами">{[{data[order].code}]}</span><br> -->
                                 розмір по чверті: <span>{[{data[order].objDims}]}</span>см<br>
                                 ширина багету: <span>{[{data[order].mWidth}]}</span>см<br>
-                                зовнішній розмір: <span>{[{data[order].dims}]}</span>см<br>
+                                <!-- зовнішній розмір: <span>{[{data[order].dims}]}</span>см<br> -->
                             </div>
                             <div class="price">
                                 <span class="">{[{data[order].price}]}</span>грн
                             </div>
                         </div>
-                    </div><br>
-                    <h4 class=" text-right price">загальна сума: <span>{[{totalSum}]}</span>грн</h4>
+                        <div class="delete-item">
+                            <button ng-click="deleteFromCart($index)" class="button tiny alert">
+                                <i class="fa fa-ban fa-2x"></i>
+                            </button>
+        
+                        </div>
+                    </div>
+                    <br>
+                    <h4 class=" text-right price">загальна сума: <span>{[{totalSum}]}</span> грн</h4>
                 </div>
                 <div class="cell medium-6">
                     <form id="gform" name="frameOrder" method="POST" class="" action="https://script.google.com/macros/s/AKfycbzTk1MXcnDWmccVSjUGPJBzp_7SpaRey36ebKNFRg/exec" novalidate>
                         <input type="text" id="name" name="ім’я" placeholder="ім’я" required>
                         <input type="text" id="phone" name="телефон" placeholder="телефон" required>
-                        <input type="text" id="mail" name="mail" placeholder="e-mail" >
+                        <input type="text" id="mail" name="mail" placeholder="e-mail">
                         <textarea rows="4" name="примітки" placeholder="примітки"></textarea>
                         <hr>
                         <div class="form-sub">доставка:</div><br>
@@ -127,10 +134,12 @@
                         <label for="deliver-self">самовивіз з офісу</label><br>
                         <input type="radio" id="inputDeliveryNP" name="delivery" value="на відділення Нової пошти">
                         <label for="inputDeliveryNP">на відділення Нової пошти:</label><br>
-                        <textarea id="deliveryNP" rows="1" name="адреса НП" value="" placeholder="місто/село, № відділення"></textarea>
+                        <textarea id="deliveryNP" rows="1" name="адреса НП" value="" 
+                        style="display: none;" placeholder="місто/село, № відділення"></textarea>
                         <input type="radio" id="inputDeliveryAddress" name="delivery" value="на адресу Новою поштою">
                         <label for="inputDeliveryAddress">на адресу Новою поштою:</label>
-                        <textarea id="deliveryAddress" rows="1" name="адреса" value=""  placeholder="адреса"></textarea>
+                        <textarea  id="deliveryAddress" rows="1" name="адреса" value="" 
+                        style="display: none;" placeholder="адреса"></textarea>
                         <hr>
                         <div class="form-sub">оплата:</div>
                         <select name="оплата">

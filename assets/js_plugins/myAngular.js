@@ -16,33 +16,41 @@ app.controller('kleynodShopCtrl', function($scope, $http) {
 
     $scope.cartQuant = 0;
     $scope.totalSum = 0;
-    $scope.countSum = function() {
-        $scope.totalSum = 0;
-        angular.forEach($scope.frameCart, function(i) {
-            $scope.totalSum += $scope.data[i].price;
-            $scope.frameCodes += $scope.data[i].code +",";
-        });
-    };
-
-
-
-    $scope.selectFrame = function(index) {
-        $scope.selectedFrame = index;
-
-    };
-    $scope.addToCart = function(index) {
-
-        if ($scope.frameCart.indexOf(index) === -1) {
-            $scope.frameCart.push(index);
-            $scope.cartQuant++;
-        }
-    };
-
 
     $http.get("assets/data/data.json").then(function(response) {
         $scope.data = response.data;
 
     });
+
+    $scope.countSum = function() {
+        $scope.totalSum = 0;
+        angular.forEach($scope.frameCart, function(i) {
+            $scope.totalSum += $scope.data[i].price;
+            $scope.frameCodes += $scope.data[i].code + ",";
+        });
+    };
+
+    $scope.selectFrame = function(index) {
+        $scope.selectedFrame = index;
+
+    };
+
+    $scope.addToCart = function(index) {
+        if ($scope.frameCart.indexOf(index) === -1) {
+            $scope.frameCart.push(index);
+            $scope.cartQuant = $scope.frameCart.length;
+        }
+    };
+
+    $scope.deleteFromCart = function(index) {
+        $scope.frameCart.splice(index, 1);
+        $scope.countSum();
+        $scope.cartQuant = $scope.frameCart.length;
+    };
+
+
+
+
 });
 
-// ["ім’я", "телефон", "коди рамок", "примітки", "оплата", "delivery", "адреса", "сума"]
+// ["ім’я", "телефон", "mail", "коди рамок", "примітки", "оплата", "delivery", "адреса", "адреса НП", "сума"]
