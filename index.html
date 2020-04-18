@@ -13,15 +13,37 @@
     <meta property="og:description" content="Фахова оправа творів живопису, графіки, світлин, документів" />
     <meta property="og:image" content="https://rama.lviv.ua/og-img.jpg">
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://rama.lviv.ua/" />
+    <meta property="og:url" content="https://rama.lviv.ua/shop" />
     <link rel="stylesheet" href="assets/css/app.css">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
   </head>
 <body>
 
-<div class="clnd-bg"></div>
+<div class="clnd-bg-full"></div>
+<!-- ADDED CART MSG -->
+<div id="addedCartMsg">
+    <div class="grid-x align-center-middle">
+        <div class="cell large-8">
+            <h5 class="uppercase text-center bold">товар додано у кошик</h5>
+        </div>
+    </div>
+</div>
 <div ng-app="kleynodShop" ng-controller="kleynodShopCtrl">
+<!-- CART VIEW -->
+<div id="cartView" style="display: none;">
+    <div ng-repeat="order in frameCart" class="grid-x grid-padding-x align-bottom cart-order">
+        <div class="cell small-7">
+            <img src="assets/img/ready-frames/{[{data[order].code}]}.jpg" alt="">
+        </div>
+        <div class="cell small-5 frame-descr dark-gold">
+        	<span>{[{data[order].objDims}]}</span>см
+            <div class="price ">
+                <span class="">{[{data[order].price}]}</span>грн
+            </div>
+        </div>
+    </div><br>	<br>	
+</div>
     <div class="off-canvas-wrapper">
         <!--     	OFF-CANVAS details -->
         <div class="off-canvas position-top" id="frameDetails" data-off-canvas data-transition="overlap" style="width: 94vw; margin-left: 2vw;">
@@ -66,12 +88,12 @@
                 <h3 class="uppercase brown text-center">оформлення замовлення</h3>
             </div>
             <div class="grid-x grid-padding-x ">
-                <div class="cell medium-6">
+                <div class="cell medium-6 dark-gold">
                     <div ng-repeat="order in frameCart" class="grid-x grid-padding-x cart-order">
                         <div class="cell shrink">
                             <img src="assets/img/ready-frames/{[{data[order].code}]}.jpg" alt="">
                         </div>
-                        <div class="cell auto dark-gold ">
+                        <div class="cell auto  ">
                             <div class="frame-descr">
                                 код рами: <span name="код рами">{[{data[order].code}]}</span><br>
                                 розмір по чверті: <span>{[{data[order].objDims}]}</span>см<br>
@@ -83,20 +105,24 @@
                             </div>
                         </div>
                     </div><br>
-                    <h4 class="brown text-right price">загальна сума: <span>{[{totalSum}]}</span>грн</h4>
+                    <h4 class=" text-right price">загальна сума: <span>{[{totalSum}]}</span>грн</h4>
                 </div>
                 <div class="cell medium-6">
                     <form id="gform" name="frameOrder" method="POST" class="" action="https://script.google.com/macros/s/AKfycbzTk1MXcnDWmccVSjUGPJBzp_7SpaRey36ebKNFRg/exec" novalidate>
                         <input type="text" id="name" name="ім’я" placeholder="ім’я" required>
                         <input type="text" id="phone" name="телефон" placeholder="телефон" required>
+                        <input type="text" id="mail" name="mail" placeholder="e-mail" >
                         <textarea rows="4" name="примітки" placeholder="примітки"></textarea>
                         <hr>
                         <div class="form-sub">доставка:</div><br>
                         <input type="radio" id="deliver-self" name="delivery" value="самовивіз">
                         <label for="deliver-self">самовивіз з офісу</label><br>
-                        <input type="radio" id="delivery" name="delivery" value="доставити">
-                        <label for="delivery">доставити за адресою:</label>
-                        <textarea id="deliveryAddress" rows="1" name="адреса" placeholder="адреса"></textarea>
+                        <input type="radio" id="inputDeliveryNP" name="delivery" value="на відділення Нової пошти">
+                        <label for="inputDeliveryNP">на відділення Нової пошти:</label><br>
+                        <textarea id="deliveryNP" rows="1" name="адреса НП" value="" placeholder="місто/село, № відділення"></textarea>
+                        <input type="radio" id="inputDeliveryAddress" name="delivery" value="на адресу Новою поштою">
+                        <label for="inputDeliveryAddress">на адресу Новою поштою:</label>
+                        <textarea id="deliveryAddress" rows="1" name="адреса" value=""  placeholder="адреса"></textarea>
                         <hr>
                         <div class="form-sub">оплата:</div>
                         <select name="оплата">
@@ -133,25 +159,33 @@
             <div class="clnd-title">
                 <h2 class="uppercase brown text-center">готові рами</h2>
             </div>
-            <div class="grid-x grid-padding-x align-center ">
-                <div class="cell large-9 ">
-                    <div class="card card-section brown text-center">
-                        <p> В нашій майстерні ми дотримуємось принципу безвідходного виробництва, максимально використовуючи всі матеріали та обрізки.
-                            <br>Залишки рейок багету трансформуються в рами, які ідеально підійдуть для фотографій, полотен, дзеркал, та іншого домашнього декору.
-                        </p>
-                        <p class="dark-gold bold"> Увага! Деякі рами можуть мати незначні дефекти (царапини, тріщинки тощо). <br>Це додає рамам шарму, а вам — супер доступну ціну :)
-                        </p>
-                        <p> Доставка в будь-який куточок України.
-                        </p>
+            <div class="grid-container fluid">
+                <div class="grid-x grid-margin-x  ">
+                    <div class="cell carton-hole clnd-white-bg ">
+                        <div class="grid-x grid-padding-x grid-padding-y align-center ">
+                            <div class="cell large-9  brown text-center">
+                                <p><br> В нашій майстерні ми дотримуємось принципу безвідходного виробництва, максимально використовуючи всі матеріали та обрізки.
+                                    <p> В нашій майстерні ми дотримуємось принципу безвідходного виробництва, максимально використовуючи всі матеріали та обрізки.
+                                        <br>Залишки рейок багету трансформуються в рами, які ідеально підійдуть для фотографій, полотен, дзеркал, та іншого домашнього декору.
+                                    </p>
+                                    <p class="dark-gold bold"> Увага! Деякі рами можуть мати незначні дефекти (царапини, тріщинки тощо). <br>Це додає рамам шарму, а вам — супер доступну ціну :)
+                                    </p>
+                                    <p> Доставка в будь-який куточок України.
+                                    </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </div><br><br>
             <div class="grid-x grid-padding-x  small-up-1 medium-up-2 large-up-3 xlarge-up-4" data-equalizer data-equalize-by-row="true">
                 <div class="cell" ng-repeat="frame in data">
-                    <div class="card card-section" data-equalizer-watch>
-                        <a ng-click="selectFrame($index)" data-open="frameDetails">
-                            <img src="assets/img/ready-frames/{[{frame.code}]}.jpg" alt="">
-                            <div class="grid-x dark-gold  align-bottom">
+                    <div class="card  carton-hole" data-equalizer-watch>
+                        <div class="clnd-white-bg"></div>
+                        <a class="frame-card" ng-click="selectFrame($index)" data-open="frameDetails">
+                            <div style="overflow: hidden;">
+                                <img src="assets/img/ready-frames/{[{frame.code}]}.jpg" alt="">
+                            </div>
+                            <div class="card-section grid-x dark-gold  align-bottom ">
                                 <div class="cell medium-auto frame-descr">розмір по чверті: <span>{[{frame.objDims}]}</span>см<br>
                                     ширина багету: <span>{[{frame.mWidth}]}</span>см</div>
                                 <div class="cell medium-shrink price text-right">
@@ -159,9 +193,9 @@
                                 </div>
                             </div>
                         </a>
-                        <div class="grid-x">
+                        <div class="grid-x card-section">
                             <div class="cell text-center">
-                                <button ng-click="addToCart($index)" type="button" class="brown uppercase button clnd-buy">купити</button>
+                                <button ng-click="addToCart($index)" type="button" class="brown uppercase button carton add-to-cart clnd-bg clnd-buy">купити</button>
                             </div>
                         </div>
                     </div>
@@ -190,7 +224,7 @@
                     Львів, вул. Коперника, 20
                     <br><a class="tel" href="tel://+380505329482">050 53-29-482</a>
                     <br><a class="tel" href="tel://+380322403564">032 240-35-64</a>
-                    <br>cleynod.lviv@gmail.com</p>
+                    <br>kleynod.lviv@gmail.com</p>
                 <p class="work-hours">ПН—ПТ: 10:00—18:00
                     <br>СБ: 10:00—15:00 <br>Неділя — вихідний</p> <br>
                 <a href="https://www.facebook.com/kleynod.lviv/" target="_blank">
