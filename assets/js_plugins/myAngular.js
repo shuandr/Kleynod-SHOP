@@ -13,9 +13,12 @@ app.config(function($interpolateProvider) {
 app.controller('kleynodShopCtrl', function($scope, $http) {
     $scope.frameCart = [];
     $scope.frameCodes = [];
+    $scope.emptyCart = !0;
+
 
     $scope.cartQuant = 0;
     $scope.totalSum = 0;
+
 
     $http.get("assets/data/data.json").then(function(response) {
         $scope.data = response.data;
@@ -39,6 +42,7 @@ app.controller('kleynodShopCtrl', function($scope, $http) {
         if ($scope.frameCart.indexOf(index) === -1) {
             $scope.frameCart.push(index);
             $scope.cartQuant = $scope.frameCart.length;
+            $scope.emptyCart = !$scope.frameCart ;
         }
     };
 
@@ -46,7 +50,14 @@ app.controller('kleynodShopCtrl', function($scope, $http) {
         $scope.frameCart.splice(index, 1);
         $scope.countSum();
         $scope.cartQuant = $scope.frameCart.length;
+        $scope.emptyCart = !$scope.frameCart.length;
+
     };
+     $scope.sort = function(keyname) {
+        $scope.sortKey = keyname; //set the sortKey to the param passed
+        $scope.reverse = !$scope.reverse; //if true make it false and vice versa
+    };
+
 
 
 
