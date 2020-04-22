@@ -55,7 +55,7 @@
             <!--        OFF-CANVAS details -->
             <div class="off-canvas position-top" id="frameDetails" data-off-canvas data-transition="overlap"
             data-content-scroll="false" style="width: 94vw; margin-left: 2vw;">
-                <div class="grid-x grid-padding-x grid-padding-y" style="margin-top: 3vh;">
+                <div data-off-canvas-scrollbox class="grid-x grid-padding-x grid-padding-y" style="margin-top: 3vh;">
                     <div class="cell large-auto"></div>
                     <div class="cell large-7 wrapper">
                         <img src="assets/img/ready-frames/{[{data[selectedFrame].code}]}.jpg" alt="">
@@ -95,7 +95,7 @@
                 <div class="clnd-title">
                     <h3 class="uppercase brown text-center">оформлення замовлення</h3>
                 </div>
-                <div class="grid-x grid-padding-x ">
+                <div data-off-canvas-scrollbox class="grid-x grid-padding-x ">
                     <div class="cell medium-6 dark-gold">
                         <div ng-show="emptyCart" class="cell empty-cart uppercase dark-gold text-center">наразі кошик порожній</div>
                         <div ng-repeat="order in frameCart" class="grid-x grid-padding-x cart-order">
