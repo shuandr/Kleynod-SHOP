@@ -53,31 +53,33 @@
         </div>
         <div class="off-canvas-wrapper">
             <!--        OFF-CANVAS details -->
-            <div class="off-canvas position-top" id="frameDetails" data-off-canvas data-transition="overlap"
-             style="width: 94vw; margin-left: 2vw;">
-                <div data-off-canvas-scrollbox class="grid-x grid-padding-x grid-padding-y" style="margin-top: 3vh;">
-                    <div class="cell large-auto"></div>
-                    <div class="cell large-7 wrapper">
+            <div class="off-canvas position-top" id="frameDetails" data-off-canvas data-transition="overlap" style="width: 94vw; margin-left: 2vw;">
+                <div class="grid-x grid-padding-x grid-padding-y align-center" style="margin-top: 3vh;">
+                    <div class="cell small-12 large-shrink wrapper">
                         <img src="assets/img/ready-frames/{[{data[selectedFrame].code}]}.jpg" alt="">
                     </div>
                     <div class="cell large-4 wrapper">
-                        <div class="grid-x grid-padding-x align-left">
+                        <div class="grid-x grid-padding-x align-left" style="height: 100%">
                             <div class="cell medium-8 large-12">
                                 <img src="assets/img/ready-frames/{[{data[selectedFrame].code}]}-fragm.jpg" alt="">
                             </div>
                             <div class="cell medium-4 large-auto">
-                                <div class="grid-x dark-gold align-bottom">
-                                    <div class="cell large-auto frame-descr">
+                                <div class="grid-x dark-gold align-middle align-right"  style="height: 100%" >
+                                    <div class="cell auto medium-12 large-auto frame-descr">
                                         код рами: <span>{[{data[selectedFrame].code}]}</span><br>
                                         розмір по чверті: <span>{[{data[selectedFrame].objDims}]}</span>см<br>
                                         ширина багету: <span>{[{data[selectedFrame].mWidth}]}</span>см<br>
-                                        зовнішній розмір: <span>{[{data[selectedFrame].dims}]}</span>см<br>
+                                        зовнішній розмір: <span>{[{data[selectedFrame].dims}]}</span>см
                                     </div>
-                                    <div class="cell large-shrink price">
+                                    <div class="cell shrink price text-right ">
                                         <span class="">{[{data[selectedFrame].price}]}</span><br>грн
                                     </div>
                                     <div class="cell text-center">
-                                        <button ng-click="addToCart(selectedFrame)" type="button" class="brown uppercase add-to-cart button clnd-buy"><i class="fa fa-cart-plus fa-2x"></i>  купити</button>
+                                        <button ng-click="addToCart(selectedFrame)" type="button" class="brown uppercase add-to-cart button gold-bg clnd-buy"><i class="fa fa-cart-plus fa-2x"></i> купити</button>
+                                    </div>
+                                    <div class="cell text-right align-self-bottom prev-next">
+                                        <button ng-click="prevFrame()" type="button" class="dark-gold button  apricot-bg"><i class="fa fa-arrow-left fa-2x"></i></button>
+                                        <button ng-click="nextFrame()" type="button" class="dark-gold button apricot-bg"><i class="fa fa-arrow-right fa-2x"></i></button>
                                     </div>
                                 </div>
                             </div>
@@ -85,17 +87,16 @@
                         <div class="grid-x">
                         </div>
                     </div>
-                    <div class="cell large-auto"></div>
                     <button class="close-button gold" aria-label="Close menu" type="button" data-close>
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
             </div>        <!--        OFF-CANVAS order -->
-            <div class="off-canvas position-bottom" id="frameOrder" data-off-canvas data-transition="overlap" style="width: 94vw; margin-left: 2vw; z-index: 10000">
+            <div class="off-canvas position-bottom" id="frameOrder" data-off-canvas data-transition="overlap"  style="width: 94vw; margin-left: 2vw; z-index: 10000">
                 <div class="clnd-title">
                     <h3 class="uppercase brown text-center">оформлення замовлення</h3>
                 </div>
-                <div data-off-canvas-scrollbox class="grid-x grid-padding-x ">
+                <div  class="grid-x grid-padding-x ">
                     <div class="cell medium-6 dark-gold">
                         <div ng-show="emptyCart" class="cell empty-cart uppercase dark-gold text-center">наразі кошик порожній</div>
                         <div ng-repeat="order in frameCart" class="grid-x grid-padding-x cart-order">
@@ -188,14 +189,15 @@
                 </div>
                 <div id="checkout">
                     <button type="button" ng-click="countSum()" data-open="frameOrder" class="brown button small cart-btn">
-                        <i class="fa fa-shopping-cart fa-2x"></i><span>  {[{cartQuant}]}</span></button>
+                        <i class="fa fa-shopping-cart fa-2x"></i><span> {[{cartQuant}]}</span></button>
                 </div>
                 <div class="clnd-title">
                     <h2 class="uppercase brown text-center">готові рами</h2>
                 </div>
                 <div class="grid-container fluid">
                     <div class="grid-x grid-margin-x  ">
-                        <div class="cell carton-hole clnd-white-bg ">
+                        <div class="cell carton-hole  ">
+                            <div class="clnd-white-bg"></div>
                             <div class="grid-x grid-padding-x grid-padding-y align-center ">
                                 <div class="cell large-9  brown text-center">
                                     <p><br>
@@ -212,7 +214,10 @@
                     </div>
                 </div><br><br>
                 <div class="grid-x grid-padding-x grid-padding-y align-right ">
-                    <div class="cell shrink uppercase bold dark-gold">
+                    <!-- <div class="cell small-12 medium-shrink text-center uppercase bold dark-gold" >
+                        <p style="padding-top: 0.4rem ">сортувати:</p>
+                    </div> -->
+                    <div class="cell small-12 medium-shrink text-center uppercase bold dark-gold">
                         <button type="button" class="button sort-btn" ng-click="sort('price')">за ціною <i class="sort-I-price fa fa-sort-amount-asc"></i></button>
                         <button type="button" class="button sort-btn" ng-click="sort('objDims')">за розміром <i class="sort-I-dim fa fa-sort-amount-asc"></i></button>
                     </div>
@@ -221,11 +226,11 @@
                     <div class="cell" ng-repeat="frame in data | orderBy:sortKey:reverse" style="position: relative; z-index: 5">
                         <div class="card  carton-hole" data-equalizer-watch>
                             <div class="clnd-white-bg"></div>
-                            <a class="frame-card" ng-click="selectFrame($index)" data-open="frameDetails">
+                            <a class="frame-card" ng-click="selectFrame(frame) | orderBy:sortKey:reverse" data-open="frameDetails">
                                 <div style="overflow: hidden;">
                                     <img src="assets/img/ready-frames/{[{frame.code}]}.jpg" alt="">
                                 </div>
-                                <div class="card-section grid-x dark-gold  align-bottom ">
+                                <div class="card-section grid-x dark-gold  align-middle ">
                                     <div class="cell auto frame-descr">розмір по чверті: <span>{[{frame.objDims}]}</span>см<br>
                                         ширина багету: <span>{[{frame.mWidth}]}</span>см</div>
                                     <div class="cell shrink price text-right">

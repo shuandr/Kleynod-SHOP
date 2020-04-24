@@ -33,8 +33,8 @@ app.controller('kleynodShopCtrl', function($scope, $http) {
         });
     };
 
-    $scope.selectFrame = function(index) {
-        $scope.selectedFrame = index;
+    $scope.selectFrame = function(frame) {
+        $scope.selectedFrame = $scope.data.indexOf(frame);
 
     };
 
@@ -42,7 +42,7 @@ app.controller('kleynodShopCtrl', function($scope, $http) {
         if ($scope.frameCart.indexOf(index) === -1) {
             $scope.frameCart.push(index);
             $scope.cartQuant = $scope.frameCart.length;
-            $scope.emptyCart = !$scope.frameCart ;
+            $scope.emptyCart = !$scope.frameCart;
         }
     };
 
@@ -53,11 +53,30 @@ app.controller('kleynodShopCtrl', function($scope, $http) {
         $scope.emptyCart = !$scope.frameCart.length;
 
     };
-     $scope.sort = function(keyname) {
+
+    $scope.sort = function(keyname) {
         $scope.sortKey = keyname; //set the sortKey to the param passed
         $scope.reverse = !$scope.reverse; //if true make it false and vice versa
+        // $scope.selectedFrame = selectFrame(index);
     };
 
+    $scope.nextFrame = function() {
+        if ($scope.selectedFrame < $scope.data.length - 1) {
+            $scope.selectedFrame++;
+
+        } else {
+            $scope.selectedFrame = 0;
+        };
+    };
+
+    $scope.prevFrame = function() {
+        if ($scope.selectedFrame !== 0) {
+            $scope.selectedFrame--;
+
+        } else {
+            $scope.selectedFrame = $scope.data.length - 1;
+        };
+    };
 
 
 
