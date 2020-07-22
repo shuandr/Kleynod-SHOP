@@ -24,23 +24,37 @@ app.controller('kleynodShopCtrl', function($scope, $http) {
         $scope.data = response.data;
 
     });
+    $http.get("assets/data/shop.json").then(function(response) {
+        $scope.shop = response.data;
+        $scope.selectedCat = $scope.shop[0];
+
+    });
+
 
     $scope.countSum = function() {
         $scope.totalSum = 0;
         angular.forEach($scope.frameCart, function(i) {
-            $scope.totalSum += $scope.data[i].price;
-            $scope.frameCodes += $scope.data[i].code + ",";
+            $scope.totalSum += Number(i.price);
+            $scope.frameCodes += i.code + ",";
         });
     };
 
     $scope.selectFrame = function(frame) {
-        $scope.selectedFrame = $scope.data.indexOf(frame);
+        $scope.selectedFrame = $scope.selectedCat.items.indexOf(frame);
+
+    };
+    $scope.selectCat = function(cat) {
+        $scope.selectedCat = $scope.shop[$scope.shop.indexOf(cat)];
+
+
 
     };
 
-    $scope.addToCart = function(index) {
-        if ($scope.frameCart.indexOf(index) === -1) {
-            $scope.frameCart.push(index);
+    $scope.addToCart = function(frame) {
+        if (!$scope.frameCart.some(x => x.code == frame.code)) {
+            // $scope.frameCart.push(index); // було робоче
+            // $scope.frameCart.push($scope.selectedCat.items[index]); 
+            $scope.frameCart.push(frame);
             $scope.cartQuant = $scope.frameCart.length;
             $scope.emptyCart = !$scope.frameCart;
         }
@@ -61,9 +75,8 @@ app.controller('kleynodShopCtrl', function($scope, $http) {
     };
 
     $scope.nextFrame = function() {
-        if ($scope.selectedFrame < $scope.data.length - 1) {
+        if ($scope.selectedFrame < $scope.selectedCat.items.length - 1) {
             $scope.selectedFrame++;
-
         } else {
             $scope.selectedFrame = 0;
         };
@@ -74,11 +87,19 @@ app.controller('kleynodShopCtrl', function($scope, $http) {
             $scope.selectedFrame--;
 
         } else {
-            $scope.selectedFrame = $scope.data.length - 1;
+            $scope.selectedFrame = $scope.selectedCat.items.length - 1;
         };
     };
 
+    $scope.key = function($event) {
+        // nреба додати ng-keydown="key($event)" в html
+        if ($event.keyCode == 37) { // left arrow
+            $scope.prevFrame();
 
+        } else if ($event.keyCode == 39) { // right arrow
+            $scope.nextFrame();
+        }
+    };
 
 
 });

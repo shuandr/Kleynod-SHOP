@@ -18,64 +18,59 @@
 </head>
 
 <body>
-    <div id="preloader" class="grid-x clnd-bg align-center-middle">
-        <div class="cell" id="pre-logo">
-            <img src="assets/img/main-logo.svg" alt="">
-        </div>
-    </div>
-    <div style="position: relative;">
-        <div class="clnd-bg-full">
-        </div>
-    </div>
-    <!-- ADDED CART MSG -->
-    <div id="addedCartMsg" style="display: none;">
-        <div class="grid-x align-center-middle">
-            <div class="cell large-8">
-                <h5 class="uppercase text-center bold">товар додано у кошик</h5>
+    <div ng-app="kleynodShop" ng-controller="kleynodShopCtrl">
+        <div style="position: relative;">
+            <div class="clnd-bg-full">
             </div>
         </div>
-    </div>
-    <div ng-app="kleynodShop" ng-controller="kleynodShopCtrl">
+        <!-- ADDED CART MSG -->
+        <div id="addedCartMsg" style="display: none;">
+            <div class="grid-x align-center-middle">
+                <div class="cell large-8">
+                    <h5 class="uppercase text-center bold">товар додано у кошик</h5>
+                </div>
+            </div>
+        </div>
         <!-- CART VIEW -->
         <div id="cartView" style="display: none;">
             <div ng-show="emptyCart" class="cell empty-cart dark-gold text-center">наразі кошик порожній</div>
             <div ng-repeat="order in frameCart" class="grid-x grid-padding-x align-bottom cart-order">
                 <div class="cell small-7">
-                    <img src="assets/img/ready-frames/{[{data[order].code}]}.jpg" alt="">
+                    <img src="assets/img/ready-frames/{[{order.code}]}.jpg" alt="">
                 </div>
                 <div class="cell small-5 frame-descr dark-gold">
-                    <span>{[{data[order].objDims}]}</span>см
+                    <span>{[{order.objDims}]}</span>см
                     <div class="price ">
-                        <span class="">{[{data[order].price}]}</span>грн
+                        <span class="">{[{order.price}]}</span>грн
                     </div>
                 </div>
             </div>
         </div>
         <div class="off-canvas-wrapper">
             <!--        OFF-CANVAS details -->
-            <div class="off-canvas position-top" id="frameDetails" data-off-canvas data-transition="overlap" style="width: 94vw; margin-left: 2vw;">
+            <div class="off-canvas position-top" id="frameDetails" data-off-canvas data-transition="overlap" style="width: 94vw; margin-left: 2vw;" ng-keydown="key($event)">
                 <div class="grid-x grid-padding-x grid-padding-y align-center" style="margin-top: 3vh;">
                     <div class="cell small-12 large-shrink wrapper">
-                        <img src="assets/img/ready-frames/{[{data[selectedFrame].code}]}.jpg" alt="">
+                        <img src="assets/img/ready-frames/{[{selectedCat.items[selectedFrame].code}]}.jpg" alt="">
                     </div>
                     <div class="cell large-4 wrapper">
                         <div class="grid-x grid-padding-x align-left" style="height: 100%">
                             <div class="cell medium-8 large-12">
-                                <img src="assets/img/ready-frames/{[{data[selectedFrame].code}]}-fragm.jpg" alt="">
+                                <img src="assets/img/ready-frames/{[{selectedCat.items[selectedFrame].code}]}-fragm.jpg" alt="">
                             </div>
                             <div class="cell medium-4 large-auto">
                                 <div class="grid-x dark-gold align-middle align-right"  style="height: 100%" >
                                     <div class="cell auto medium-12 large-auto frame-descr">
-                                        код рами: <span>{[{data[selectedFrame].code}]}</span><br>
-                                        розмір по чверті: <span>{[{data[selectedFrame].objDims}]}</span>см<br>
-                                        ширина багету: <span>{[{data[selectedFrame].mWidth}]}</span>см<br>
-                                        зовнішній розмір: <span>{[{data[selectedFrame].dims}]}</span>см
+                                        код рами: <span>{[{selectedCat.items[selectedFrame].code}]}</span><br>
+                                        розмір по чверті: <span>{[{selectedCat.items[selectedFrame].objDims}]}</span>см<br>
+                                        ширина багету: <span>{[{selectedCat.items[selectedFrame].mWidth}]}</span>см<br>
+                                        зовнішній розмір: <span>{[{selectedCat.items[selectedFrame].dims}]}</span>см
                                     </div>
                                     <div class="cell shrink price text-right ">
-                                        <span class="">{[{data[selectedFrame].price}]}</span><br>грн
+                                        <span class="">{[{selectedCat.items[selectedFrame].price}]}</span><br>грн
                                     </div>
                                     <div class="cell text-center">
-                                        <button ng-click="addToCart(selectedFrame)" type="button" class="brown uppercase add-to-cart button gold-bg clnd-buy"><i class="fa fa-cart-plus fa-2x"></i> купити</button>
+                                        <button ng-click="addToCart(selectedFrame)" type="button" class=" uppercase add-to-cart button  to-cart"><i class="fa fa-cart-plus fa-2x"></i> купити</button>
                                     </div>
                                     <div class="cell text-right align-self-bottom prev-next">
                                         <button ng-click="prevFrame()" type="button" class="dark-gold button  apricot-bg"><i class="fa fa-arrow-left fa-2x"></i></button>
@@ -101,17 +96,17 @@
                         <div ng-show="emptyCart" class="cell empty-cart uppercase dark-gold text-center">наразі кошик порожній</div>
                         <div ng-repeat="order in frameCart" class="grid-x grid-padding-x cart-order">
                             <div class="cell shrink">
-                                <img src="assets/img/ready-frames/{[{data[order].code}]}.jpg" alt="">
+                                <img src="assets/img/ready-frames/{[{order.code}]}.jpg" alt="">
                             </div>
                             <div class="cell auto  ">
                                 <div class="frame-descr">
-                                    <!-- код рами: <span name="код рами">{[{data[order].code}]}</span><br> -->
-                                    розмір по чверті: <span>{[{data[order].objDims}]}</span>см<br>
-                                    ширина багету: <span>{[{data[order].mWidth}]}</span>см<br>
-                                    <!-- зовнішній розмір: <span>{[{data[order].dims}]}</span>см<br> -->
+                                    <!-- код рами: <span name="код рами">{[{order.code}]}</span><br> -->
+                                    розмір по чверті: <span>{[{order.objDims}]}</span>см<br>
+                                    ширина багету: <span>{[{order.mWidth}]}</span>см<br>
+                                    <!-- зовнішній розмір: <span>{[{order.dims}]}</span>см<br> -->
                                 </div>
                                 <div class="price">
-                                    <span class="">{[{data[order].price}]}</span>грн
+                                    <span class="">{[{order.price}]}</span>грн
                                 </div>
                             </div>
                             <div class="delete-item">
@@ -182,18 +177,48 @@
                 </div>
             </div>        <!-- CONTENT -->
             <div class="off-canvas-content" data-off-canvas-content>
-                <div class="grid-x ">
-                    <a href="http://rama.lviv.ua/index.html"><div class="cell main-logo text-center">
-                    <img src="assets/img/main-logo.svg" alt="">
+                <div id="preloader" class="grid-x clnd-bg align-center-middle">
+                    <div class="cell" id="pre-logo">
+                        <img src="assets/img/main-logo.svg" alt="">
+                    </div>
                 </div>
-                </a>
+                <div style="position: relative;">
+                    <div class="clnd-bg-full">
+                    </div>
                 </div>
+                <header>
+                    <div id="top" class="grid-x clnd-header clnd-bg align-center-middle">
+                        <div class="cell  small-order-3 large-order-1 large-3 text-center brown">
+                            {[{data.address}]} <br>{[{data.schedule}]}
+                        </div>
+                        <div class="cell small-6 medium-4 large-3 small-order-1 large-order-2 text-center">
+                            <div class="main-logo ">
+                                <a href="https://rama.lviv.ua/index.html" >
+                                    <img src="assets/img/main-logo.svg" alt="на головну"></a>
+                            </div>
+                        </div>
+                        <div class="cell show-for-medium medium-4 small-order-2 large-order-3  large-3 text-center">
+                            <a class="tel" href="tel://{[{data.tel1}]}"><i class="fa fa-phone-square"></i> {[{data.telView1}]}</a><br>
+                            <a class="tel" href="tel://{[{data.tel2}]}"><i class="fa fa-phone-square"></i> {[{data.telView2}]}</a><br>
+                            <a class="tel" href="tel://{[{data.tel3}]}"><i class="fa fa-phone-square"></i> {[{data.telView3}]}</a>
+                        </div>
+                    </div>
+                   
+                </header>            
                 <div id="checkout">
                     <button type="button" ng-click="countSum()" data-open="frameOrder" class="brown button small cart-btn">
                         <i class="fa fa-shopping-cart fa-2x"></i><span> {[{cartQuant}]}</span></button>
                 </div>
+    
+    <ul class="menu align-center ">
+       <li class="clnd-menu uppercase dark-gold-bg" ng-repeat="cat in shop" ng-click="selectCat(cat)">
+    
+       {[{cat.name}]}
+    </li>
+    </ul>
+    
                 <div class="clnd-title">
-                    <h2 class="uppercase brown text-center">готові рами</h2>
+                    <h2 class="uppercase brown text-center">{[{selectedCat.name}]}</h2>
                 </div>
                 <div class="grid-container fluid">
                     <div class="grid-x grid-margin-x  ">
@@ -201,30 +226,21 @@
                             <div class="clnd-white-bg"></div>
                             <div class="grid-x grid-padding-x grid-padding-y align-center ">
                                 <div class="cell large-9  brown text-center">
-                                    <p><br>
-                                        В нашій майстерні ми дотримуємось принципу безвідходного виробництва, максимально використовуючи всі матеріали та обрізки.
-                                        <br>Залишки рейок багету трансформуються в рами, які ідеально підійдуть для фотографій, полотен, дзеркал, та іншого домашнього декору.
-                                    </p>
-                                    <p class="dark-gold bold"> Увага! Деякі рами можуть мати незначні дефекти (царапини, тріщинки тощо). <br>Це додає рамам шарму, а вам — супер доступну ціну :)
-                                    </p>
-                                    <p> Доставка в будь-який куточок України.
-                                    </p>
+                                    <br><p>{[{selectedCat.text}]}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div><br><br>
                 <div class="grid-x grid-padding-x grid-padding-y align-right ">
-                    <!-- <div class="cell small-12 medium-shrink text-center uppercase bold dark-gold" >
-                        <p style="padding-top: 0.4rem ">сортувати:</p>
-                    </div> -->
+                   
                     <div class="cell small-12 medium-shrink text-center uppercase bold dark-gold">
                         <button type="button" class="button sort-btn" ng-click="sort('price')">за ціною <i class="sort-I-price fa fa-sort-amount-asc"></i></button>
                         <button type="button" class="button sort-btn" ng-click="sort('objDims')">за розміром <i class="sort-I-dim fa fa-sort-amount-asc"></i></button>
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x  small-up-1 medium-up-2 large-up-3 xlarge-up-4" data-equalizer data-equalize-by-row="true">
-                    <div class="cell" ng-repeat="frame in data | orderBy:sortKey:reverse" style="position: relative; z-index: 5">
+                    <div class="cell" ng-repeat="frame in selectedCat.items | orderBy:sortKey:reverse" style="position: relative; z-index: 5">
                         <div class="card  carton-hole" data-equalizer-watch>
                             <div class="clnd-white-bg"></div>
                             <a class="frame-card" ng-click="selectFrame(frame) | orderBy:sortKey:reverse" data-open="frameDetails">
@@ -241,7 +257,7 @@
                             </a>
                             <div class="grid-x card-section">
                                 <div class="cell text-center">
-                                    <button ng-click="addToCart($index)" type="button" class="brown uppercase button carton add-to-cart clnd-bg clnd-buy">
+                                    <button ng-click="addToCart(frame)" type="button" class="brown uppercase button carton add-to-cart clnd-bg clnd-buy">
                                         <i class="fa fa-cart-plus fa-2x"></i>
                                         <span>купити</span>
                                     </button>
@@ -253,7 +269,7 @@
                 <br>
                 <div class="grid-x">
                     <div class="cell text-center">
-                        <button type="button" ng-click="countSum()" data-open="frameOrder" class="brown button clnd-buy uppercase">
+                        <button type="button" ng-click="countSum()" data-open="frameOrder" class="gold button to-cart uppercase">
                             <i class="fa fa-shopping-cart fa-2x"></i> <span>{[{cartQuant}]} | кошик</span></button>
                         <br><br><br>
                     </div>
@@ -265,19 +281,16 @@
                             <div id="google-map" style="width:100%;height:400px; border:1px solid #a00"></div>
                         </div>
                         <div class="cell medium-5 large-3 address">
-                            
-                                <p>рамарня-галерея «Клейнод»<br>
-                                    Львів, вул. Коперника, 20
-                                    <br><a class="tel" href="tel://+380505329482">050 53-29-482</a>
-                                    <br><a class="tel" href="tel://+380322403564">032 240-35-64</a>
-                                    <br>kleynod.lviv@gmail.com</p>
-                                <p class="work-hours">ПН—ПТ: 10:00—18:00
-                                    <br>СБ: 10:00—15:00 <br>Неділя — вихідний</p> <br>
-                                <a href="https://www.facebook.com/kleynod.lviv/" target="_blank">
-                                    <i class="fa fa-facebook-square fa-2x"></i></a>
-                                <a href="https://www.instagram.com/kleynod_framegallery/" target="_blank"> <i class="fa fa-instagram fa-2x"></i></a>
+                            <p>{[{data.address}]}</p>
+                            <p><a class="tel" href="tel://{[{data.tel1}]}"><i class="fa fa-phone-square"></i> {[{data.telView1}]}</a><br>
+                                <a class="tel" href="tel://{[{data.tel2}]}"><i class="fa fa-phone-square"></i> {[{data.telView2}]}</a><br>
+                                <a class="tel" href="tel://{[{data.tel3}]}"><i class="fa fa-phone-square"></i> {[{data.telView3}]}</a></p>
+                            <p><a href="mailto:{[{data.email}]}"> {[{data.email}]}</a></p>
+                            <p>{[{data.schedule}]} <br>Неділя — вихідний</p> <br>
+                            <a href="https://www.facebook.com/{[{data.fb}]}/" target="_blank">
+                                <i class="fa fa-facebook-square fa-2x"></i></a>
+                            <a href="https://www.instagram.com/{[{data.insta}]}/" target="_blank"> <i class="fa fa-instagram fa-2x"></i></a>
                         </div>
-                        <!--  -->
                     </div>
                 </footer>
                 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfuN7UgfDB2RfqBeNIZ1S_rpZ6HU-GKYU"></script>
