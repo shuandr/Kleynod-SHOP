@@ -40,7 +40,8 @@ app.controller('kleynodShopCtrl', function($scope, $http) {
     };
 
     $scope.selectFrame = function(frame) {
-        $scope.selectedFrame = $scope.selectedCat.items.indexOf(frame);
+        // $scope.selectedFrame = $scope.selectedCat.items.indexOf(frame);
+        $scope.selectedFrame = frame;
 
     };
     $scope.selectCat = function(cat) {
@@ -71,23 +72,26 @@ app.controller('kleynodShopCtrl', function($scope, $http) {
     $scope.sort = function(keyname) {
         $scope.sortKey = keyname; //set the sortKey to the param passed
         $scope.reverse = !$scope.reverse; //if true make it false and vice versa
-        // $scope.selectedFrame = selectFrame(index);
     };
 
     $scope.nextFrame = function() {
-        if ($scope.selectedFrame < $scope.selectedCat.items.length - 1) {
-            $scope.selectedFrame++;
+        arr = $scope.selectedCat.items;
+        index = arr.indexOf($scope.selectedFrame);
+        if (index < arr.length - 1) {
+            $scope.selectedFrame = arr[index + 1];
         } else {
-            $scope.selectedFrame = 0;
+            $scope.selectedFrame = arr[0];
         };
     };
 
     $scope.prevFrame = function() {
-        if ($scope.selectedFrame !== 0) {
-            $scope.selectedFrame--;
+        arr = $scope.selectedCat.items;
+        index = arr.indexOf($scope.selectedFrame);
+        if (index !== 0) {
+            $scope.selectedFrame = arr[index - 1];
 
         } else {
-            $scope.selectedFrame = $scope.selectedCat.items.length - 1;
+            $scope.selectedFrame = arr[arr.length - 1];
         };
     };
 
@@ -103,5 +107,3 @@ app.controller('kleynodShopCtrl', function($scope, $http) {
 
 
 });
-
-// ["ім’я", "телефон", "mail", "коди рамок", "примітки", "оплата", "delivery", "адреса", "адреса НП", "сума"]

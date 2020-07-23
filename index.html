@@ -51,23 +51,23 @@
             <div class="off-canvas position-top" id="frameDetails" data-off-canvas data-transition="overlap" style="width: 94vw; margin-left: 2vw;" ng-keydown="key($event)">
                 <div class="grid-x grid-padding-x grid-padding-y align-center" style="margin-top: 3vh;">
                     <div class="cell small-12 large-shrink wrapper">
-                        <img src="assets/img/ready-frames/{[{selectedCat.items[selectedFrame].code}]}.jpg" alt="">
+                        <img src="assets/img/ready-frames/{[{selectedFrame.code}]}.jpg" alt="">
                     </div>
                     <div class="cell large-4 wrapper">
                         <div class="grid-x grid-padding-x align-left" style="height: 100%">
                             <div class="cell medium-8 large-12">
-                                <img src="assets/img/ready-frames/{[{selectedCat.items[selectedFrame].code}]}-fragm.jpg" alt="">
+                                <img src="assets/img/ready-frames/{[{selectedFrame.code}]}-fragm.jpg" alt="">
                             </div>
                             <div class="cell medium-4 large-auto">
                                 <div class="grid-x dark-gold align-middle align-right"  style="height: 100%" >
                                     <div class="cell auto medium-12 large-auto frame-descr">
-                                        код рами: <span>{[{selectedCat.items[selectedFrame].code}]}</span><br>
-                                        розмір по чверті: <span>{[{selectedCat.items[selectedFrame].objDims}]}</span>см<br>
-                                        ширина багету: <span>{[{selectedCat.items[selectedFrame].mWidth}]}</span>см<br>
-                                        зовнішній розмір: <span>{[{selectedCat.items[selectedFrame].dims}]}</span>см
+                                        код рами: <span>{[{selectedFrame.code}]}</span><br>
+                                        розмір по чверті: <span>{[{selectedFrame.objDims}]}</span>см<br>
+                                        ширина багету: <span>{[{selectedFrame.mWidth}]}</span>см<br>
+                                        зовнішній розмір: <span>{[{selectedFrame.dims}]}</span>см
                                     </div>
                                     <div class="cell shrink price text-right ">
-                                        <span class="">{[{selectedCat.items[selectedFrame].price}]}</span><br>грн
+                                        <span class="">{[{selectedFrame.price}]}</span><br>грн
                                     </div>
                                     <div class="cell text-center">
                                         <button ng-click="addToCart(selectedFrame)" type="button" class=" uppercase add-to-cart button  to-cart"><i class="fa fa-cart-plus fa-2x"></i> купити</button>
