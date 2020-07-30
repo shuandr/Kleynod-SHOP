@@ -193,16 +193,15 @@
                 </div>
                 <header>
                     <div id="top" class="grid-x clnd-header clnd-bg align-center-middle">
-                        <div class="cell  small-order-3 large-order-1 large-3 text-center brown">
-                            {[{data.address}]} <br>{[{data.schedule}]}
+                        <div class="cell  small-order-3 large-order-1 large-3 text-center brown pre">{[{data.address}]}<br>{[{data.schedule}]}
                             <div class="show-for-small-only">
-                                <a href="viber://add?number={[{data.vbr}]}"><i class="fab fa-viber fa-2x viber"></i></a>  
-                            <a href="https://t.me/{[{data.tlgrm}]}" target="_blank"><i class="fab fa-telegram fa-2x tlgrm" ></i></a>
+                                <a href="viber://add?number={[{data.vbr}]}"><i class="fab fa-viber fa-2x viber"></i></a>
+                                <a href="https://t.me/{[{data.tlgrm}]}" target="_blank"><i class="fab fa-telegram fa-2x tlgrm"></i></a>
                             </div>
                         </div>
                         <div class="cell small-6 medium-4 large-3 small-order-1 large-order-2 text-center">
                             <div class="main-logo ">
-                                <a href="https://rama.lviv.ua/index.html" >
+                                <a href="https://rama.lviv.ua/index.html">
                                     <img src="assets/img/main-logo.svg" alt="на головну"></a>
                             </div>
                         </div>
@@ -210,11 +209,10 @@
                             <a class="tel" href="tel://{[{data.tel1}]}"><i class="fas fa-phone-square"></i> {[{data.telView1}]}</a><br>
                             <a class="tel" href="tel://{[{data.tel2}]}"><i class="fas fa-phone-square"></i> {[{data.telView2}]}</a><br>
                             <a class="tel" href="tel://{[{data.tel3}]}"><i class="fas fa-phone-square"></i> {[{data.telView3}]}</a><br>
-                            <a href="viber://add?number={[{data.vbr}]}"><i class="fab fa-viber fa-2x viber"></i></a>  
-                            <a href="https://t.me/{[{data.tlgrm}]}" target="_blank"><i class="fab fa-telegram fa-2x tlgrm" ></i></a>
+                            <a href="viber://chat?number={[{data.vbr}]}"><i class="fab fa-viber fa-2x viber"></i></a>
+                            <a href="https://t.me/{[{data.tlgrm}]}" target="_blank"><i class="fab fa-telegram fa-2x tlgrm"></i></a>
                         </div>
                     </div>
-                   
                 </header>            <div id="checkout">
                     <button type="button" ng-click="countSum()" data-open="frameOrder" class="brown button small cart-btn">
                         <i class="fas fa-shopping-cart fa-2x"></i><span> {[{cartQuant}]}</span></button>
@@ -232,10 +230,8 @@
                         <div class="cell carton-hole  ">
                             <div class="clnd-white-bg"></div>
                             <div class="grid-x grid-padding-x grid-padding-y align-center ">
-                                <div class="cell large-9  brown text-center">
-                                    <br>
-                                    <p>{[{selectedCat.text}]}</p>
-                                </div>
+                                <div class="cell large-9  brown text-center ">
+                                    <p class="pre">{[{selectedCat.text}]}</p></div>
                             </div>
                         </div>
                     </div>
@@ -301,7 +297,7 @@
                                 <a href="https://t.me/{[{data.tlgrm}]}" target="_blank"><i class="fab fa-telegram fa-2x tlgrm"></i></a>
                             </p>
                             <p><a href="mailto:{[{data.email}]}"> {[{data.email}]}</a></p>
-                            <p>{[{data.schedule}]} <br>Неділя — вихідний</p> <br>
+                            <p class="pre">{[{data.schedule}]}<br>Неділя — вихідний</p> <br>
                             <a href="https://www.facebook.com/{[{data.fb}]}/" target="_blank">
                                 <i class="fas fa-facebook-square fa-2x"></i></a>
                             <a href="https://www.instagram.com/{[{data.insta}]}/" target="_blank"> <i class="fas fa-instagram fa-2x"></i></a>
