@@ -82,10 +82,9 @@
                             <div class="cell medium-4 large-auto">
                                 <div class="grid-x dark-gold align-stretch align-right" style="height: 100%">
                                     <div class="cell auto medium-12 large-auto frame-descr">
-                                        {[{selectedCat.Field1}]}<span> {[{selectedFrame.field1}]}</span> {[{selectedCat.units}]}<br>
-                                        {[{selectedCat.Field2}]}<span> {[{selectedFrame.field2}]}</span>{[{selectedCat.units}]}<br>
-                                        {[{selectedCat.Field3}]}<span> 
-                                        {[{selectedFrame.dims}]}</span> см
+                                        {[{selectedCat.Field1}]}<span> {[{selectedFrame.field1}]}</span><br>
+                                        {[{selectedCat.Field2}]}<span> {[{selectedFrame.field2}]}</span><br>
+                                        {[{selectedCat.Field3}]}<span>{[{selectedFrame.dims}]}</span>{[{selectedCat.units}]} 
                                     </div>
                                     <div class="cell shrink price text-right flex-container flex-dir-column ">
                                         <div class="flex-child-auto frame-descr">
@@ -126,8 +125,8 @@
                             <div class="cell auto  ">
                                 <div class="frame-descr">
                                     <!-- код рами: <span name="код рами">{[{order.code}]}</span><br> -->
-                                    розмір по чверті: <span>{[{order.objDims}]}</span>см<br>
-                                    ширина багету: <span>{[{order.mWidth}]}</span>см<br>
+                                    розмір по чверті: <span>{[{order.field2}]}</span>см<br>
+                                    ширина багету: <span>{[{order.field3}]}</span>см<br>
                                     <!-- зовнішній розмір: <span>{[{order.dims}]}</span>см<br> -->
                                 </div>
                                 <div class="price">
@@ -216,7 +215,7 @@
                         <div class="cell  small-order-3 large-order-1 large-3 text-center brown ">
                             <div class="pre">{[{data.address}]}<br>{[{data.schedule}]}</div>
                             <div class="show-for-small-only">
-                                <a href="viber://add?number={[{data.vbr}]}"><i class="fab fa-viber fa-2x viber"></i></a>
+                                <a href="viber://add?number={[{data.vbr}]}"><i class="fab fa-viber fa-2x viber" target="_blank"></i></a>
                                 <a href="https://t.me/{[{data.tlgrm}]}" target="_blank"><i class="fab fa-telegram fa-2x tlgrm"></i></a>
                             </div>
                         </div>
@@ -274,10 +273,10 @@
                                 <div class="card-section grid-x dark-gold  align-stretch ">
                                     <div class="cell auto frame-descr">{[{selectedCat.Field1}]} <span>
                                             {[{frame.field1}]}</span>
-                                        {[{selectedCat.units}]}
+                                        <!-- {[{selectedCat.units}]} -->
                                         <br>
-                                        {[{selectedCat.Field2}]}
-                                        {[{frame.field2}]}{[{selectedCat.units}]}
+                                        {[{selectedCat.Field3}]}
+                                        {[{frame.dims}]}{[{selectedCat.units}]}
                                      </div> 
                                     <div class="cell shrink price text-right">
                                         <span class="">{[{frame.price}]}</span><br>грн
