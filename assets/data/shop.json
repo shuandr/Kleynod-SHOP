@@ -145,7 +145,6 @@
     "units": " см",
     "items": [
         {"code":"P-001","field1":"Ангелик","dims":"13×18","field2":1.5,"price":100},
-        {"code":"P-002","field1":"Ангелик","dims":"13×18","field2":1.5,"price":100},
         {"code":"P-003","field1":"Миколай","dims":"13×17","field2":1.5,"price":100},
         {"code":"P-004","field1":"Миколай","dims":"13×17","field2":2,"price":120},
         {"code":"P-005","field1":"Зірка над Львовом","dims":"13×18","field2":1.5,"price":100},

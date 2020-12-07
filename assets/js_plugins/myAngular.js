@@ -37,7 +37,7 @@ app.controller('kleynodShopCtrl', function($scope, $http) {
         $scope.totalSum = 0;
         angular.forEach($scope.frameCart, function(i) {
             $scope.totalSum += Number(i.price);
-            $scope.frameCodes += i.code + ",";
+            $scope.frameCodes += i.code + ", ";
         });
     };
 
