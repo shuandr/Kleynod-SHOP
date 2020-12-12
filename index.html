@@ -39,42 +39,45 @@
 </head>
 
 <body>
-    <div ng-app="kleynodShop" ng-controller="kleynodShopCtrl">
+    <div ng-app="kleynodShop" ng-controller="kleynodShopCtrl" >
         <div style="position: relative;">
             <div class="clnd-bg-full">
             </div>
         </div>
         <div id="addedCartMsg" style="display: none;">
-        <div class="grid-x align-center-middle">
-            <div class="cell large-8">
-                <h5 class="uppercase text-center bold">товар додано у кошик</h5>
-            </div>
-        </div>
-    </div>
-    <!-- CART VIEW -->
-    <div id="cartView" style="display: none;">
-        <div ng-show="emptyCart" class="cell empty-cart dark-gold text-center">наразі кошик порожній</div>
-        <div ng-repeat="order in frameCart" class="grid-x grid-padding-x align-bottom cart-order">
-            <div class="cell small-7">
-                <img src="assets/img/ready-frames/{[{order.code}]}.jpg" alt="">
-            </div>
-            <div class="cell small-5 frame-descr dark-gold">
-                <span>{[{order.objDims}]}</span>см
-                <div class="price ">
-                    <span class="">{[{order.price}]}</span>грн
+            <div class="grid-x align-center-middle">
+                <div class="cell large-8">
+                    <h5 class="uppercase text-center bold">товар додано у кошик</h5>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <div id="checkout">
-        <a type="button" href="#!/order" ng-click="countSum()" class="brown button small cart-btn">
-            <i class="fas fa-shopping-cart fa-2x"></i><span> {[{cartQuant}]}</span></a>
-    </div>
-    <div style="display:none;" id="thankyou_message" class=" text-center">
-        <h5 class="dark-gold ">Дякуємо! Замовлення прийнято<br>Незабаром ми вам зателефонуємо для уточнення деталей</h5><br>
-        <button id="thankyou-close" class=" button uppercase" data-close><i class="fas fa-close "></i>&nbsp; наздоровля!</button>
-    </div>
+        <!-- CART VIEW -->
+        <div id="cartView" style="display: none;">
+            <div ng-show="emptyCart" class="cell empty-cart dark-gold text-center">наразі кошик порожній</div>
+            <div ng-repeat="order in frameCart" class="grid-x grid-padding-x align-bottom cart-order">
+                <div class="cell small-7">
+                    <img src="assets/img/ready-frames/{[{order.code}]}.jpg" alt="">
+                </div>
+                <div class="cell small-5 frame-descr dark-gold">
+                    <span>{[{order.objDims}]}</span>см
+                    <div class="price ">
+                        <span class="">{[{order.price}]}</span>грн
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="checkout">
+            <a type="button" href="#!/order" ng-click="countSum()" class="brown button small cart-btn">
+                <i class="fas fa-shopping-cart fa-2x"></i><span> {[{cartQuant}]}</span></a>
+        </div>
+        <div style="display:none;" id="thankyou_message" class=" text-center">
+            <div class="grid-x align-center-middle" style="height: 100%">
+                <div class="cell large-8 inner apricot-bg">
+                    <h5 class="dark-gold ">Дякуємо! Замовлення прийнято<br>Незабаром ми вам зателефонуємо для уточнення деталей</h5><br>
+                    <button id="thankyou-close" class=" button uppercase" data-close><i class="fas fa-times "></i>&nbsp; наздоровля!</button>
+                </div>
+            </div>
+        </div>
         <div id="preloader" class="grid-x clnd-bg align-center-middle">
             <div class="cell" id="pre-logo">
                 <img src="assets/img/main-logo.svg" alt="">
@@ -107,8 +110,7 @@
                     <a href="https://t.me/{[{data.tlgrm}]}" target="_blank"><i class="fab fa-telegram fa-2x tlgrm"></i></a>
                 </div>
             </div>
-        </header>    <div ng-view></div>
-       
+        </header>    <div ng-view ></div>
         <br><br>
         <footer class="clnd-footer">
             <div class=" footer-divider"></div>
@@ -170,7 +172,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-sanitize.js"></script>
     <script src="assets/js_plugins/myAngular.js"></script>
     <script src="assets/js/app.js"></script>
-    <!-- <script src="assets/js_plugins/angular-simple-mask.js"></script> -->
 
     
 </body>

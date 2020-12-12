@@ -39,8 +39,6 @@
 </head>
 
 <body>
-        <!-- <script src="assets/js_plugins/form-submission-handler.js"></script> -->
-    
     <div class="clnd-title">
         <h3 class="uppercase brown text-center">оформлення замовлення</h3>
     </div>
@@ -54,10 +52,9 @@
                     </div>
                     <div class="cell auto  ">
                         <div class="frame-descr">
-                            <!-- код рами: <span name="код рами">{[{order.code}]}</span><br> -->
-                            розмір по чверті: <span>{[{order.field2}]}</span>см<br>
-                            ширина багету: <span>{[{order.field3}]}</span>см<br>
-                            <!-- зовнішній розмір: <span>{[{order.dims}]}</span>см<br> -->
+                            {[{order.Field1}]} <span>{[{order.field1}]}</span><br>
+                            {[{order.Field2}]} <span>{[{order.field2}]}</span><br>
+                            {[{order.Field3}]} <span>{[{order.dims}]}</span>см<br>
                         </div>
                         <div class="price">
                             <span class="">{[{order.price}]}</span>грн
@@ -73,7 +70,7 @@
                 <h4 class=" text-right price">загальна сума: <span>{[{totalSum}]}</span> грн</h4>
             </div>
             <div class="cell medium-6">
-                <form id="gform" name="frameOrder" >
+                <form ng-submit="formSubmit()" id="gform" name="frameOrder">
                     <br><span>* обов’язкові поля</span><br><br>
                     <div class="grid-x grid-padding-x ">
                         <div class="cell  shrink ">
@@ -115,7 +112,7 @@
                     <input type="text" class="hide" name="коди рамок" ng-value="frameCodes" value=" ">
                     <input type="text" class="hide" name="сума" ng-value="totalSum" value=" ">
                     <div class="text-center">
-                        <input  ng-click="formSubmit()" class=" button uppercase text-center" value="надіслати">&nbsp;&nbsp;
+                        <input type="submit" class="button uppercase text-center" value="надіслати">&nbsp;&nbsp;
                     </div>
                 </form>
             </div>
@@ -126,14 +123,11 @@
             <a type="button" href="#!/shop" class="button back-shop-btn s-bold uppercase" style="margin-bottom: 0">вернутись у крамницю</a>
         </div>
     </div>
-    
-    
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular-route.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-sanitize.js"></script>
     <script src="assets/js_plugins/myAngular.js"></script>
     <script src="assets/js/app.js"></script>
-    <!-- <script src="assets/js_plugins/angular-simple-mask.js"></script> -->
 
     
 </body>

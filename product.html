@@ -39,7 +39,7 @@
 </head>
 
 <body>
-    <div class="grid-container">
+    <div class="grid-container" ng-keyup="key($event)" tabindex="1">
         <div class="grid-x grid-padding-x grid-padding-y align-center white-bg big-shadow">
             <div class="cell small-12 large-shrink ">
                 <img src="assets/img/ready-frames/{[{selectedFrame.code}]}.jpg" alt="">
@@ -86,7 +86,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-sanitize.js"></script>
     <script src="assets/js_plugins/myAngular.js"></script>
     <script src="assets/js/app.js"></script>
-    <!-- <script src="assets/js_plugins/angular-simple-mask.js"></script> -->
 
     
 </body>

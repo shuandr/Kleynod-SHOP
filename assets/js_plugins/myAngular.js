@@ -22,14 +22,21 @@ app.config(['$compileProvider', "$routeProvider", "$interpolateProvider",
     }
 ]);
 
-app.controller('kleynodShopCtrl', function($scope, $http, $routeParams, $location, $timeout) {
+app.controller('kleynodShopCtrl', function($scope, $http, $route, $routeParams, $location, $timeout) {
     $scope.frameCart = [];
     $scope.frameCodes = [];
     $scope.emptyCart = !0;
     $scope.cartQuant = 0;
     $scope.totalSum = 0;
-    // $location.url('/order');
-    // $timeout($location.url('/shop'), 2000);
+    
+    $scope.$on('$viewContentLoaded', function(event) {
+        $timeout(function() {
+            if ($route.current.templateUrl == 'product.html') {
+                $location.search({ id: $scope.selectedFrame.code });
+
+            }
+        }, 200);
+    });
 
     $http.get("assets/data/data.json").then(function(response) {
         $scope.data = response.data;
@@ -51,6 +58,7 @@ app.controller('kleynodShopCtrl', function($scope, $http, $routeParams, $locatio
                 for (var u = cat.length - 1; u >= 0; u--) {
                     if (cat[u].code == urlQuery.id) {
                         $scope.selectedFrame = cat[u];
+                        $scope.selectedCat = $scope.shop[i];
                         break;
                     }
                 }
@@ -60,6 +68,8 @@ app.controller('kleynodShopCtrl', function($scope, $http, $routeParams, $locatio
         }
 
     });
+
+
 
     $scope.countSum = function() {
         $scope.totalSum = 0;
@@ -72,7 +82,6 @@ app.controller('kleynodShopCtrl', function($scope, $http, $routeParams, $locatio
     $scope.selectFrame = function(frame) {
         $scope.selectedFrame = frame;
         $location.search({ id: frame.code });
-        // console.log(frame.code);
 
 
     };
@@ -81,14 +90,24 @@ app.controller('kleynodShopCtrl', function($scope, $http, $routeParams, $locatio
         $scope.selectedCat = $scope.shop[$scope.shop.indexOf(cat)];
         $location.search({ cat: $scope.shop.indexOf(cat) });
 
-        // console.log(catURL);
-
     };
 
     $scope.addToCart = function(frame) {
         if (!$scope.frameCart.some(x => x.code == frame.code)) {
-            // $scope.frameCart.push(index); // було робоче
-            // $scope.frameCart.push($scope.selectedCat.items[index]); 
+            
+            for (var i = $scope.shop.length - 1; i >= 0; i--) {
+                var cat = $scope.shop[i];
+
+                for (var u = cat.items.length - 1; u >= 0; u--) {
+                    if (cat.items[u].code == frame.code) {
+                        frame.Field1 = cat.Field1;
+                        frame.Field2 = cat.Field2;
+                        frame.Field3 = cat.Field3;
+                        break;
+                    }
+                }
+            }
+
             $scope.frameCart.push(frame);
             $scope.cartQuant = $scope.frameCart.length;
             $scope.emptyCart = !$scope.frameCart;
@@ -138,13 +157,13 @@ app.controller('kleynodShopCtrl', function($scope, $http, $routeParams, $locatio
         // nреба додати ng-keydown="key($event)" в html
         if ($event.keyCode == 37) { // left arrow
             $scope.prevFrame();
+            // console.log("йо");
+
 
         } else if ($event.keyCode == 39) { // right arrow
             $scope.nextFrame();
         }
     };
-
-
 
     // FORM-SUBMISSION-HANDLER
 
@@ -204,9 +223,6 @@ app.controller('kleynodShopCtrl', function($scope, $http, $routeParams, $locatio
         // }
     }
     // END of FORM-SUBMISSION-HANDLER
-
-
-
 });
 
 app.directive('angularMask', function() {
