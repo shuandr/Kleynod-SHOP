@@ -1,0 +1,141 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Клейнод | рамарня | багетна майстерня | КРАМНИЦЯ</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-82329311-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-82329311-1');
+</script>
+
+    <meta name="description" content="Готові рами та фахова оправа творів живопису і графіки, дзеркал, світлин, документів">
+    <meta name="keywords" content="рама, оформлення, дизайн, паспарту, живопис, графіка, дзеркала, фотографії, світлини, інтер’єр, розмальовки на склі, експозиційні меблі, мольберт, Львів, frames, mouldings, design, interior, drawings, photos, painting, mirror, Lviv, Ukraine, онлайн, online">
+    <meta property="og:title" content="рамарня «Клейнод» | КРАМНИЦЯ" />
+    <meta property="og:description" content="Готові рами та фахова оправа творів живопису і графіки, дзеркал, світлин, документів" />
+    <meta property="og:image" content="https://shop.rama.lviv.ua/og-img.jpg">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://shop.rama.lviv.ua/" />
+    <link rel="stylesheet" href="assets/css/app.css">
+    <!-- favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#480000">
+    <meta name="apple-mobile-web-app-title" content="Клейнод">
+    <meta name="application-name" content="Клейнод">
+    <meta name="msapplication-TileColor" content="#480000">
+    <meta name="theme-color" content="#ffffff">
+    <script src="https://kit.fontawesome.com/0caeff61d9.js" crossorigin="anonymous"></script>
+   
+</head>
+
+<body>
+        <!-- <script src="assets/js_plugins/form-submission-handler.js"></script> -->
+    
+    <div class="clnd-title">
+        <h3 class="uppercase brown text-center">оформлення замовлення</h3>
+    </div>
+    <div id="frameOrder" class="grid-container big-shadow">
+        <div class="grid-x grid-padding-x white-bg">
+            <div class="cell medium-6 dark-gold">
+                <div ng-show="emptyCart" class="cell empty-cart uppercase dark-gold text-center">наразі кошик порожній</div>
+                <div ng-repeat="order in frameCart" class="grid-x grid-padding-x cart-order">
+                    <div class="cell shrink">
+                        <img src="assets/img/ready-frames/{[{order.code}]}.jpg" alt="">
+                    </div>
+                    <div class="cell auto  ">
+                        <div class="frame-descr">
+                            <!-- код рами: <span name="код рами">{[{order.code}]}</span><br> -->
+                            розмір по чверті: <span>{[{order.field2}]}</span>см<br>
+                            ширина багету: <span>{[{order.field3}]}</span>см<br>
+                            <!-- зовнішній розмір: <span>{[{order.dims}]}</span>см<br> -->
+                        </div>
+                        <div class="price">
+                            <span class="">{[{order.price}]}</span>грн
+                        </div>
+                    </div>
+                    <div class="delete-item">
+                        <button ng-click="deleteFromCart($index)" class="button tiny alert">
+                            <i class="fas fa-ban fa-2x"></i>
+                        </button>
+                    </div>
+                </div>
+                <br>
+                <h4 class=" text-right price">загальна сума: <span>{[{totalSum}]}</span> грн</h4>
+            </div>
+            <div class="cell medium-6">
+                <form id="gform" name="frameOrder" >
+                    <br><span>* обов’язкові поля</span><br><br>
+                    <div class="grid-x grid-padding-x ">
+                        <div class="cell  shrink ">
+                            <label class="form-sub" for="phone">ім’я* </label>
+                        </div>
+                        <div class="cell auto">
+                            <input type="text" id="name" name="ім’я" required>
+                        </div>
+                    </div>
+                    <div class="grid-x grid-padding-x ">
+                        <div class="cell shrink ">
+                            <label class="form-sub" for="phone">телефон* </label>
+                        </div>
+                        <div class="cell auto">
+                            <input type="tel" id="phone" ng-model="phone" name="телефон" value="" angular-mask="(000) 000-00-00" placeholder="000 000-00-00" required>
+                        </div>
+                    </div>
+                    <input type="email" id="mail" name="mail" autocomplete="email" placeholder="e-mail">
+                    <textarea rows="4" name="примітки" placeholder="примітки"></textarea>
+                    <hr>
+                    <fieldset>
+                        <legend class="form-sub">доставка*</legend>
+                        <input type="radio" id="deliver-self" name="delivery" value="самовивіз">
+                        <label for="deliver-self">самовивіз з офісу</label><br>
+                        <input type="radio" id="inputDeliveryNP" name="delivery" required value="на відділення Нової пошти">
+                        <label for="inputDeliveryNP">на відділення Нової пошти:</label><br>
+                        <textarea id="deliveryNP" rows="1" name="адреса НП" value="" style="display: none;" placeholder="місто/село, № відділення"></textarea>
+                        <input type="radio" id="inputDeliveryAddress" name="delivery" value="на адресу Новою поштою">
+                        <label for="inputDeliveryAddress">на адресу Новою поштою:</label>
+                        <textarea id="deliveryAddress" rows="1" name="адреса" value="" style="display: none;" placeholder="адреса"></textarea>
+                    </fieldset>
+                    <hr>
+                    <div class="form-sub">оплата*</div>
+                    <select name="оплата" required>
+                        <option value="картка">на картку</option>
+                        <option value="пошта">Нова пошта</option>
+                        <option value="готівка">готівка при отриманні</option>
+                    </select>
+                    <input type="text" class="hide" name="коди рамок" ng-value="frameCodes" value=" ">
+                    <input type="text" class="hide" name="сума" ng-value="totalSum" value=" ">
+                    <div class="text-center">
+                        <input  ng-click="formSubmit()" class=" button uppercase text-center" value="надіслати">&nbsp;&nbsp;
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div><br>
+    <div class="grid-x">
+        <div class="cell text-center">
+            <a type="button" href="#!/shop" class="button back-shop-btn s-bold uppercase" style="margin-bottom: 0">вернутись у крамницю</a>
+        </div>
+    </div>
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-sanitize.js"></script>
+    <script src="assets/js_plugins/myAngular.js"></script>
+    <script src="assets/js/app.js"></script>
+    <!-- <script src="assets/js_plugins/angular-simple-mask.js"></script> -->
+
+    
+</body>
+
+</html>

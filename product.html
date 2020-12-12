@@ -1,0 +1,94 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Клейнод | рамарня | багетна майстерня | КРАМНИЦЯ</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-82329311-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-82329311-1');
+</script>
+
+    <meta name="description" content="Готові рами та фахова оправа творів живопису і графіки, дзеркал, світлин, документів">
+    <meta name="keywords" content="рама, оформлення, дизайн, паспарту, живопис, графіка, дзеркала, фотографії, світлини, інтер’єр, розмальовки на склі, експозиційні меблі, мольберт, Львів, frames, mouldings, design, interior, drawings, photos, painting, mirror, Lviv, Ukraine, онлайн, online">
+    <meta property="og:title" content="рамарня «Клейнод» | КРАМНИЦЯ" />
+    <meta property="og:description" content="Готові рами та фахова оправа творів живопису і графіки, дзеркал, світлин, документів" />
+    <meta property="og:image" content="https://shop.rama.lviv.ua/og-img.jpg">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://shop.rama.lviv.ua/" />
+    <link rel="stylesheet" href="assets/css/app.css">
+    <!-- favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#480000">
+    <meta name="apple-mobile-web-app-title" content="Клейнод">
+    <meta name="application-name" content="Клейнод">
+    <meta name="msapplication-TileColor" content="#480000">
+    <meta name="theme-color" content="#ffffff">
+    <script src="https://kit.fontawesome.com/0caeff61d9.js" crossorigin="anonymous"></script>
+   
+</head>
+
+<body>
+    <div class="grid-container">
+        <div class="grid-x grid-padding-x grid-padding-y align-center white-bg big-shadow">
+            <div class="cell small-12 large-shrink ">
+                <img src="assets/img/ready-frames/{[{selectedFrame.code}]}.jpg" alt="">
+            </div>
+            <div class="cell large-auto ">
+                <div class="grid-x grid-padding-x align-left" style="height: 100%">
+                    <div class="cell medium-8 large-12">
+                        <img src="assets/img/ready-frames/{[{selectedFrame.code}]}-fragm.jpg" alt="" loading="lazy">
+                    </div>
+                    <div class="cell medium-4 large-auto">
+                        <div class="grid-x dark-gold align-stretch align-right" style="height: 100%">
+                            <div class="cell auto medium-12 large-auto frame-descr">
+                                {[{selectedCat.Field1}]}<span> {[{selectedFrame.field1}]}</span><br>
+                                {[{selectedCat.Field2}]}<span> {[{selectedFrame.field2}]}</span><br>
+                                {[{selectedCat.Field3}]}<span>{[{selectedFrame.dims}]}</span>{[{selectedCat.units}]}
+                            </div>
+                            <div class="cell shrink price text-right flex-container flex-dir-column ">
+                                <div class="flex-child-auto frame-descr">
+                                    код: <br>{[{selectedFrame.code}]}</div>
+                                <div class="flex-child-shrink">
+                                    <span>{[{selectedFrame.price}]}</span><br>грн
+                                </div>
+                            </div>
+                            <div class="cell text-center">
+                                <button ng-click="addToCart(selectedFrame)" type="button" class="button uppercase brown carton add-to-cart clnd-bg   clnd-buy"><i class="fas fa-cart-plus fa-2x"></i> купити</button>
+                            </div>
+                            <div class="cell text-right align-self-bottom prev-next">
+                                <button ng-click="prevFrame()" type="button" class="dark-gold button  apricot-bg"><i class="fas fa-arrow-left fa-2x"></i></button>
+                                <button ng-click="nextFrame()" type="button" class="dark-gold button apricot-bg"><i class="fas fa-arrow-right fa-2x"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><br>
+        <div class="grid-x">
+            <div class="cell text-center">
+                <a type="button" href="#!/shop" class="button back-shop-btn s-bold uppercase" style="margin-bottom: 0">вернутись у крамницю</a>
+            </div><br><br>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-sanitize.js"></script>
+    <script src="assets/js_plugins/myAngular.js"></script>
+    <script src="assets/js/app.js"></script>
+    <!-- <script src="assets/js_plugins/angular-simple-mask.js"></script> -->
+
+    
+</body>
+
+</html>
