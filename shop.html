@@ -61,7 +61,7 @@
     </div><br><br>
     <div class="grid-x grid-padding-x grid-padding-y align-right ">
         <div class="cell small-12 medium-shrink text-center uppercase bold dark-gold">
-            <button type="button" class="button sort-btn" ng-click="sort('availability')">наявні <i class="sort-I-price fas fa-sort-amount-down-alt"></i></button>&nbsp;
+            <button type="button" class="button sort-btn" ng-click="sort('avail')">наявні <i class="sort-I-price fas fa-sort-amount-down-alt"></i></button>&nbsp;
             <button type="button" class="button sort-btn" ng-click="sort('price')">за ціною <i class="sort-I-price fas fa-sort-amount-down-alt"></i></button>&nbsp;
             <button type="button" class="button sort-btn" ng-click="sort('dims')">за розміром <i class="sort-I-dim fas fa-sort-amount-down-alt"></i></button>
         </div>
@@ -90,8 +90,9 @@
                 <div class="grid-x card-section">
                     <div class="cell text-center">
                         <button ng-click="addToCart(frame)" type="button" class="brown uppercase button carton add-to-cart clnd-bg clnd-buy">
-                            <i class="fas fa-cart-plus fa-2x"></i>
-                            <span>купити</span>
+                            <i ng-hide="frame.avail=='demand'" class="fas fa-cart-plus fa-2x"></i>
+                            <span ng-hide="frame.avail=='demand'">купити</span>
+                            <span ng-show="frame.avail=='demand'">замовити</span>
                         </button>
                     </div>
                 </div>
