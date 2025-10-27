@@ -7,15 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Клейнод | рамарня | багетна майстерня | КРАМНИЦЯ</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-82329311-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-82329311-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'UA-82329311-1');
 </script>
-
     <meta name="description" content="Готові рами та фахова оправа творів живопису і графіки, дзеркал, світлин, документів">
     <meta name="keywords" content="рама, оформлення, дизайн, паспарту, живопис, графіка, дзеркала, фотографії, світлини, інтер’єр, розмальовки на склі, експозиційні меблі, мольберт, Львів, frames, mouldings, design, interior, drawings, photos, painting, mirror, Lviv, Ukraine, онлайн, online">
     <meta property="og:title" content="рамарня «Клейнод» | КРАМНИЦЯ" />
@@ -35,11 +34,10 @@
     <meta name="msapplication-TileColor" content="#480000">
     <meta name="theme-color" content="#ffffff">
     <script src="https://kit.fontawesome.com/0caeff61d9.js" crossorigin="anonymous"></script>
-   
 </head>
 
 <body>
-    <div ng-app="kleynodShop" ng-controller="kleynodShopCtrl" >
+    <div ng-app="kleynodShop" ng-controller="kleynodShopCtrl">
         <div style="position: relative;">
             <div class="clnd-bg-full">
             </div>
@@ -109,19 +107,19 @@
                     <a href="https://t.me/{[{data.tlgrm}]}" target="_blank"><i class="fab fa-telegram fa-2x tlgrm"></i></a>
                 </div>
             </div>
-        </header>    <div ng-view ></div>
+        </header>
+        <div ng-view></div>
         <br><br>
         <footer class="clnd-footer">
             <div class=" footer-divider"></div>
             <div class="grid-x grid-padding-x ">
                 <div class="cell medium-7 large-9">
-                    <div id="google-map" style="width:100%;height:400px; border:1px solid #a00"></div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2573.2145040214214!2d24.023537177119753!3d49.83842693124082!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473add6e2dfcebe5%3A0xeef81c2c400ff5b4!2sMykoly%20Kopernyka%20St%2C%2020%2C%20L&#39;viv%2C%20L&#39;vivs&#39;ka%20oblast%2C%2079000!5e0!3m2!1sen!2sua!4v1759846838485!5m2!1sen!2sua" width="100%" height="400" style="border:1px solid #a00;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <div class="cell medium-5 large-3 address">
                     <p>{[{data.address}]}</p>
                     <p><a class="tel" href="tel://{[{data.tel1}]}"><i class="fas fa-phone-square"></i> {[{data.telView1}]}</a><br>
                         <a class="tel" href="tel://{[{data.tel2}]}"><i class="fas fa-phone-square"></i> {[{data.telView2}]}</a><br>
-                    
                         <a href="viber://add?number={[{data.vbr}]}"><i class="fab fa-viber fa-2x viber"></i></a>
                         <a href="https://t.me/{[{data.tlgrm}]}" target="_blank"><i class="fab fa-telegram fa-2x tlgrm"></i></a>
                     </p>
@@ -133,39 +131,7 @@
                 </div>
             </div>
         </footer>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfuN7UgfDB2RfqBeNIZ1S_rpZ6HU-GKYU"></script>
-        <script>
-        var myCenterLviv = new google.maps.LatLng(49.838626, 24.025951);
-        
-        var myPin = 'assets/img/map-pin.png';
-        
-        function initialize() {
-            var mapPropLviv = {
-                zoomControl: true,
-                scrollwheel: false,
-                center: myCenterLviv,
-                zoom: 17,
-                disableDefaultUI: true,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-        
-        
-        
-            var mapLviv = new google.maps.Map(document.getElementById("google-map"), mapPropLviv);
-        
-        
-            var myMarker = new google.maps.Marker({
-                position: myCenterLviv,
-                icon: myPin,
-                map: mapLviv,
-                title: 'вул. Коперника,20'
-            });
-        
-        
-        }
-        
-        google.maps.event.addDomListener(window, 'load', initialize);
-        </script></div>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular-route.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-sanitize.js"></script>
@@ -173,8 +139,6 @@
     <script src="assets/js_plugins/angular-animate.js"></script>
     <script src="assets/js_plugins/myAngular.js"></script>
     <script src="assets/js/app.js"></script>
-
-    
 </body>
 
 </html>
