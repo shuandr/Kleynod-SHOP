@@ -1,4 +1,4 @@
-var app = angular.module('kleynodShop', ['ngRoute', 'ngSanitize']); // "ngAnimate",
+var app = angular.module('kleynodShop', ['ngRoute', 'ngLocale','ngSanitize']); // "ngAnimate",
 
 app.config(['$compileProvider', "$routeProvider", "$interpolateProvider",
 

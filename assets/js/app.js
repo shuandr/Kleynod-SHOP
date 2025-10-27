@@ -22690,7 +22690,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).keyup(function (e) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! F:\_Projects\Kleynod\_web-shop\src\assets\js\app.js */"./src/assets/js/app.js");
+module.exports = __webpack_require__(/*! D:\_Projects\Kleynod\_web-shop\src\assets\js\app.js */"./src/assets/js/app.js");
 
 
 /***/ })
