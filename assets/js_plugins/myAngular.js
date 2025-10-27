@@ -203,7 +203,7 @@ app.controller('kleynodShopCtrl', function($scope, $http, $route, $routeParams, 
         var data = getFormData(); // get the values submitted in the form
 
         // var url = event.target.action; //
-        var url = "https://script.google.com/macros/s/AKfycbz2V1g6XGBGYVqN4FjMAn_07dyiqYfRikA1MerVuO2iVvaibeDNNCLZDH9akKOzA60wUA/exec"; //
+        var url = "https://script.google.com/macros/s/AKfycbyCMX2KD0A0y6K4TOZm8h6oypslMOGmZowSZg81vZyuFc71l6Kpca5IV9RgxPlv3sevFw/exec"; //
         var xhr = new XMLHttpRequest();
         xhr.open('POST', url);
         // xhr.withCredentials = true;
