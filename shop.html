@@ -54,6 +54,7 @@
                 <div class="grid-x grid-padding-x grid-padding-y align-center ">
                     <div class="cell large-9  brown text-center ">
                         <p class="pre" ng-bind-html="selectedCat.text"></p>
+                        <p class="bold">{[{selectedCat.text2}]}</p>
                     </div>
                 </div>
             </div>
@@ -75,12 +76,7 @@
                         <img src="assets/img/ready-frames/{[{frame.code}]}.webp" alt="" loading="lazy">
                     </div>
                     <div class="card-section grid-x dark-gold  align-stretch ">
-                        <div class="cell auto frame-descr">{[{selectedCat.Field1}]} <span>
-                                {[{frame.field1}]}</span>
-                            <!-- {[{selectedCat.units}]} -->
-                            <br>
-                            {[{selectedCat.Field3}]}
-                            {[{frame.dims}]} см
+                        <div class="cell auto frame-descr pre">{[{selectedCat.Field1}]}<span>{[{frame.field1}]}</span><br>{[{frame.field2}]}<br>{[{selectedCat.Field3}]} {[{frame.dims}]} см
                         </div>
                         <div class="cell shrink price text-right">
                             <span class="">{[{frame.price}]}</span><br>грн
