@@ -35,7 +35,7 @@ app.controller('kleynodShopCtrl', function($scope, $http, $route, $routeParams, 
                 $location.search({ id: $scope.selectedFrame.code });
 
             }
-        }, 200);
+        }, 500);
     });
 
     $http.get("assets/data/data.json").then(function(response) {
