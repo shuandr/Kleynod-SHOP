@@ -1,4 +1,4 @@
-var app = angular.module('kleynodShop', ['ngRoute', 'ngLocale','ngSanitize']); // "ngAnimate",
+var app = angular.module('kleynodShop', ['ngRoute', 'ngLocale', 'ngSanitize']); // "ngAnimate",
 
 app.config(['$compileProvider', "$routeProvider", "$interpolateProvider",
 
@@ -28,7 +28,9 @@ app.controller('kleynodShopCtrl', function($scope, $http, $route, $routeParams, 
     $scope.emptyCart = !0;
     $scope.cartQuant = 0;
     $scope.totalSum = 0;
-    
+    $scope.order = {};
+    $scope.order.quantity = 1;
+
     $scope.$on('$viewContentLoaded', function(event) {
         $timeout(function() {
             if ($route.current.templateUrl == 'product.html') {
@@ -73,10 +75,29 @@ app.controller('kleynodShopCtrl', function($scope, $http, $route, $routeParams, 
 
     $scope.countSum = function() {
         $scope.totalSum = 0;
+        $scope.frameCodes = [];
         angular.forEach($scope.frameCart, function(i) {
-            $scope.totalSum += Number(i.price);
-            $scope.frameCodes += i.code + ", ";
+            $scope.totalSum += Number(i.price * i.quantity);
+            $scope.frameCodes += i.code + " — "+ i.quantity + " шт, ";
         });
+    };
+
+
+    $scope.decreaseQuantity = function(index) {
+
+        if ($scope.frameCart[index].quantity > 1) {
+            $scope.frameCart[index].quantity--;
+            $scope.countSum();
+        }
+
+
+    };
+
+    $scope.increaseQuantity = function(index) {
+
+        $scope.frameCart[index].quantity++;
+        $scope.countSum();
+
     };
 
     $scope.selectFrame = function(frame) {
@@ -94,12 +115,14 @@ app.controller('kleynodShopCtrl', function($scope, $http, $route, $routeParams, 
 
     $scope.addToCart = function(frame) {
         if (!$scope.frameCart.some(x => x.code == frame.code)) {
-            
+
             for (var i = $scope.shop.length - 1; i >= 0; i--) {
                 var cat = $scope.shop[i];
 
                 for (var u = cat.items.length - 1; u >= 0; u--) {
                     if (cat.items[u].code == frame.code) {
+
+                        frame.quantity = 1;
                         frame.Field1 = cat.Field1;
                         frame.Field2 = cat.Field2;
                         frame.Field3 = cat.Field3;

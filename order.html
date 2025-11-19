@@ -56,8 +56,21 @@
                             {[{order.Field2}]} <span>{[{order.field2}]}</span><br>
                             {[{order.Field3}]} <span>{[{order.dims}]}</span>см<br>
                         </div>
-                        <div class="price">
-                            <span class="">{[{order.price}]}</span>грн
+                        <div class="grid-x grid-padding-x">
+                            <div class="cell shrink">
+                                <div class="cart-item-counter text-center" >
+                                    <button ng-click="decreaseQuantity($index)" title="Зменшити кількість" class="cart-item-counter__button" style="color: #B46400;"> –
+                                    </button>
+                                    <input type="number" min="1" max="100" ng-model="order.quantity" class="cart-item-counter__input" style="color: #B46400; font-weight: 700;">
+                                    <button ng-click="increaseQuantity($index)" title="Збільшити кількість" class="cart-item-counter__button" style="color: #B46400;"> +
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="cell auto">
+                                <div class="price">
+                                    <span class="">{[{order.price * order.quantity}]}</span>грн
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="delete-item">
@@ -74,7 +87,7 @@
                     <br><span>* обов’язкові поля</span><br><br>
                     <div class="grid-x grid-padding-x ">
                         <div class="cell  shrink ">
-                            <label class="form-sub" for="phone">ім’я* </label>
+                            <label class="form-sub" for="name">ім’я* </label>
                         </div>
                         <div class="cell auto">
                             <input type="text" id="name" name="ім’я" required>
